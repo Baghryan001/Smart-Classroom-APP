@@ -3,7 +3,7 @@ import cv2
 from camera_client.camera import CameraHandler
 from camera_client.sender import NetworkSender
 
-# Կարգավորումներ
+
 API_URL = "http://127.0.0.1:8000/vision/process-frame"
 SEND_INTERVAL = 3  # Task 1.2: Rate Limiting (3 վայրկյանը 1 անգամ)
 
@@ -12,10 +12,10 @@ def main():
     sender = NetworkSender(api_url=API_URL)
 
     if not camera.start():
-        print("❌ Սխալ. Տեսախցիկը հասանելի չէ:")
+        print("Error: Camera is not available :")
         return
 
-    print("🎥 Տեսախցիկը միացված է:")
+    print("The camera is on :")
     last_send_time = 0
 
     try:
@@ -28,18 +28,18 @@ def main():
 
             current_time = time.time()
 
-            # Task 1.2: Rate Limiting logic
+
             if current_time - last_send_time >= SEND_INTERVAL:
                 if image_bytes:
                     success = sender.send_frame(image_bytes)
                     if success:
                         last_send_time = current_time
 
-            # Էկրանին ցույց տալ տեսախցիկի պատուհանը
+
             cv2.imshow("Smart Classroom Camera", raw_frame)
 
-            # 'q' սեղմելիս դուրս գալ
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+
+            if cv2.waitKey(1) & 0xFF == ord('a'):
                 break
 
     finally:

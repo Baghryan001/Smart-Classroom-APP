@@ -9,12 +9,12 @@ class CameraHandler:
         self.cap = None
 
     def start(self):
-        """Միացնում է տեսախցիկը"""
+
         self.cap = cv2.VideoCapture(self.camera_index)
         return self.cap.isOpened()
 
     def get_processed_frame(self):
-        """Կարդում է կադրը, փոքրացնում է և սեղմում JPEG ֆորմատով"""
+
         if not self.cap or not self.cap.isOpened():
             return None, None
 
@@ -22,7 +22,7 @@ class CameraHandler:
         if not ret:
             return None, None
 
-        # Task 1.3: Frame Preprocessing (Resize & JPEG Compression)
+
         resized_frame = cv2.resize(frame, (self.width, self.height))
         encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), self.quality]
         success, encoded_image = cv2.imencode('.jpg', resized_frame, encode_param)
@@ -33,7 +33,7 @@ class CameraHandler:
         return frame, encoded_image.tobytes()
 
     def release(self):
-        """Անջատում է տեսախցիկը"""
+
         if self.cap:
             self.cap.release()
         cv2.destroyAllWindows()

@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('amazon_sales_dataset.csv')
+df = pd.read_csv('../amazon_sales_dataset.csv')
 print('*' * 37)
 print('    AMAZON SALES DATA ANALYSIs')
 print('*' * 37)

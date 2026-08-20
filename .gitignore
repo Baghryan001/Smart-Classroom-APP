@@ -1,0 +1,19 @@
+# Default ignored files
+/shelf/
+/server/.idea/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+
+.venv/
+.idea/
+__pycache__/
+*.pyc
+
+# Արգելափակել ամեն ինչ արմատական թղթապանակում
+/*
+
+# Թույլատրել միայն անհրաժեշտ թղթապանակներն ու ֆայլերը
+!/camera_client/
+!/server/
+!.gitignore

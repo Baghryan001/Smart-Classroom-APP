@@ -4,7 +4,6 @@ from server.models.schemas import ProcessFrameResponse, HealthCheckResponse
 
 router = APIRouter(prefix="/vision", tags=["Vision Processing"])
 
-# Global փոփոխական՝ վերջին տվյալը Swagger UI-ում տեսնելու համար
 latest_detection = {
     "status": "no_data_yet",
     "filename": None,
@@ -60,7 +59,7 @@ async def process_frame(file: UploadFile = File(...)):
                 detail="The file is corrupt or cannot be decoded as an image:",
             )
 
-        # 1. Թարմացնում ենք global փոփոխականը
+   
         latest_detection = {
             "status": "success",
             "filename": file.filename or "frame.jpg",
